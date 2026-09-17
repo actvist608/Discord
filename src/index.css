@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --discord-blurple: #5865f2;
+    --discord-green: #23a55a;
+    --discord-yellow: #f0b232;
+    --discord-red: #f23f43;
+    --discord-sidebar-servers: #1e1f22;
+    --discord-sidebar-channels: #2b2d31;
+    --discord-chat-bg: #313338;
+    --discord-chat-input: #383a40;
+    --discord-hover: rgba(255, 255, 255, 0.07);
+    --discord-active: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background-color: var(--discord-sidebar-servers);
+    color: #dbdee1;
+    font-family: -apple-system, BlinkMacSystemFont, "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    user-select: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Custom Discord Scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1a1b1e;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #111214;
+  }
+}
+
+/* Discord Specific utility animations & styling */
+.discord-pill {
+  transition: height 0.15s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.discord-server-icon {
+  transition: border-radius 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.discord-tooltip {
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* Animations for Discord Profile Effects & Decorations */
+@keyframes sakuraFall {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(320px) rotate(360deg) translateX(40px);
+    opacity: 0;
+  }
+}
+
+.animate-sakura-fall {
+  animation: sakuraFall 4s linear infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(280px);
+    opacity: 0.2;
+  }
+}
+
+.animate-scanline {
+  animation: scanline 2.2s linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(-50px) translateY(-20px) rotate(-35deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(200px) translateY(120px) rotate(-35deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star {
+  animation: shootingStar 4s ease-in-out infinite;
+}
+
+@keyframes fireEmber {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-80px) translateX(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(-160px) translateX(15px) scale(0.2);
+    opacity: 0;
+  }
+}
+
+.animate-fire-ember {
+  animation: fireEmber 2s ease-out infinite;
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+    transform: translateY(-40px) scale(1) rotate(-8deg);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateY(-160px) scale(1.1) rotate(12deg);
+  }
+  100% {
+    transform: translateY(-240px) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.animate-heart-float {
+  animation: heartFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes lightningFlash {
+  0%, 90%, 94%, 98%, 100% {
+    opacity: 0;
+  }
+  92%, 96% {
+    opacity: 0.35;
+  }
+}
+
+.animate-lightning-flash {
+  animation: lightningFlash 4s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}
+
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+}
+
+.animate-matrix-rain {
+  animation: matrixRain 3s linear infinite;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(300px) translateX(25px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-snow-fall {
+  animation: snowFall 4.5s linear infinite;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(20px) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-280px) translateX(15px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-bubble-rise {
+  animation: bubbleRise 3.8s ease-in infinite;
+}
+
+@keyframes leafFall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(300px) translateX(-35px) rotate(270deg);
+    opacity: 0;
+  }
+}
+
+.animate-leaf-fall {
+  animation: leafFall 4.2s ease-in-out infinite;
+}
+
+@keyframes featherDrift {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(-15deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  60% {
+    transform: translateY(140px) translateX(20px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(300px) translateX(-15px) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+.animate-feather-drift {
+  animation: featherDrift 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+

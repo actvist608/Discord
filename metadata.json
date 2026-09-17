@@ -1,0 +1,6 @@
+{
+  "name": "Discord",
+  "description": "Un clone Discord 1:1 ultra-fidèle avec serveurs, salons textuels et vocaux, messages privés, liste d'amis, profils, réactions et paramètres.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
